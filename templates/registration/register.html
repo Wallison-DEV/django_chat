@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Registrar no Chat{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card auth-card">
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        Registrar no Chat
+                    </h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{next}}">
+
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Registrar</button>
+                    </form>
+                    <p class="change-form-p pt-4 d-flex justify-content-center gap-2">Já possui uma conta? <a
+                            href="/accounts/login">Efetuar login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

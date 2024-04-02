@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="user-list" class="list-group">
+                <h4 class="list-group-item-heading">Contatos</h4>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                </div>
+                <div>
+                    <ul id="messages" class="messages">
+                        {# Messages go here #}
+                    </ul>
+                </div>
+                <div class="panel-footer ps-4 pe-4 pb-3">
+                    <div class="input-group">
+                        <input id="chat-input" type="text" class="form-control input me-2"
+                            placeholder="Type your message here ..." maxlength="500">
+                        <span class="input-group-btn">
+                            <button id="btn-send">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let sessionKey = '{{ request.session.session_key }}';
+    let currentUser = '{{ request.user.username }}';
+</script>
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock %}
